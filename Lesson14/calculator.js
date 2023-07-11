@@ -51,4 +51,3 @@
   
   module.exports = Calculator;
   const calc = new Calculator();
-console.log(calc.divide(5, 0))
