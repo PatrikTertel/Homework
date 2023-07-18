@@ -1,6 +1,7 @@
 const axios = require("axios");
 const validator = require("jsonschema");
-const getschema = require(`../data/GetSchema.json`);
+const firstschema = require(`../data/FirstSchema.json`);
+const secondschema = require(`../data/SecondSchema.json`);
 
 describe(`API tests`, function () {
   test(`GET [Activities] request should be 200`, async () => {
@@ -14,7 +15,7 @@ describe(`API tests`, function () {
     const response = await axios.get(
       `https://fakerestapi.azurewebsites.net/api/v1/Activities/`,
     );
-    const result = await validator.validate(response.data, getschema);
+    const result = await validator.validate(response.data, secondschema);
     await expect(result.valid).toEqual(true);
   });
 
@@ -49,7 +50,7 @@ describe(`API tests`, function () {
         },
       },
     );
-    const result = await validator.validate(response.data, getschema);
+    const result = await validator.validate(response.data, firstschema);
     await expect(result.valid).toEqual(true);
   });
 
@@ -64,7 +65,7 @@ describe(`API tests`, function () {
     const response = await axios.get(
       `https://fakerestapi.azurewebsites.net/api/v1/Activities/1`,
     );
-    const result = await validator.validate(response.data, getschema);
+    const result = await validator.validate(response.data, firstschema);
     await expect(result.valid).toEqual(true);
   });
 
@@ -103,7 +104,7 @@ describe(`API tests`, function () {
         },
       },
     );
-    const result = await validator.validate(response.data, getschema);
+    const result = await validator.validate(response.data, firstschema);
     await expect(result.valid).toEqual(true);
   });
 
